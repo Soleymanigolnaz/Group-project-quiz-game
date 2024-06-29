@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+NG+Modern:wght@100..400&display=swap" rel="stylesheet" />
+    <title>quiz</title>
+  </head>
+  <body>
+    <section id="start">
+      <img src="./img/original-6eb1ccea6b298c815a9f80165a270233.png" alt="" />
+      <div class="total">
+        <h1>60 Second Quiz</h1>
+        <p>Do you want to challenge yourself?</p>
+        <p>So click on the start button</p>
+        <button class="start">start our chaleg</button>
+      </div>
+    </section>
+    <div id="quiz">
+      <section class="header">
+        <section id="score">score : 0</section>
+        <div class="counter"></div>
+        <div class="timer"></div>
+      </section>
+      <h1></h1>
+      <div id="question"></div>
+      <div id="options"></div>
+      <button onclick="para(this)" id="submit">Submit</button>
+    </div>
+    <div id="result">
+      <h1>quis compilited!</h1>
+      <p id="showscore"></p>
+    </div>
+
+    <!------------------ start js ------------------------>
+    <script>
+      function para() {
+        questionCount++;
+        if (questionCount < quizData.length) {
+          show();
+        } else {
+          resulte();
+        }
+      }
+      // quiz question & score counters //
+      let questionCount = 0;
+      let score = 0;
+
+      const question = document.getElementById("question");
+      const option = document.getElementById("options");
+      const submit = document.getElementById("submit");
+      const result = document.getElementById("result");
+      const scorebox = document.getElementById("score");
+      const start = document.querySelector(".start");
+      const quiz = document.getElementById("quiz");
+      const showscore = document.getElementById("showscore");
+      const startt = document.getElementById("start");
+
+      // quiz question datas //
+      const quizData = [
+        {
+          question: "What is the capital of France?",
+          options: ["Paris", "Madrid", "Rome", "Berlin"],
+          answer: "Paris",
+        },
+        {
+          question: "What is the largest planet in our solar system?",
+          options: ["Jupiter", "Saturn", "Mars", "Earth"],
+          answer: "Jupiter",
+        },
+      ];
+
+      //   showing questions //
+      function show() {
+        const showquestion = quizData[questionCount];
+        question.innerHTML = showquestion.question;
+        options.innerHTML = "";
+        showquestion.options.forEach((options,index) => {
+          const btn = document.createElement("button");
+		  btn.classList.add('btns')
+		  btn.setAttribute('data-option', quizData[questionCount].options[index]);
+          console.log(btn);
+          btn.innerHTML = options;
+          option.appendChild(btn);
+          option.style.display = "flex";
+		  
+          // check answers //
+          btn.addEventListener("click", function (fati) {
+			let anwserFlag = fati.target.getAttribute('data-option')
+			console.log(anwserFlag)
+			checkAnswer(anwserFlag)
+            // btn.disabled = true;
+            if (btn.innerHTML === quizData[questionCount].answer) {
+              btn.style.color = "green";
+              // btn.nextElementSibling.disabled = true;
+              // btn.nextElementSibling.nextElementSibling.disabled = true;
+              // btn.nextElementSibling.nextElementSibling.nextElementSibling.disabled = true;
+              // btn.previousElementSibling.disabled = true;
+              // btn.previousElementSibling.previousElementSibling.disabled = true;
+              // btn.previousElementSibling.previousElementSibling.previousElementSibling.disabled = true;
+              score++;
+              scorebox.innerHTML = "score : " + score;
+            } else {
+              btn.style.color = "red";
+              // btn.nextElementSibling.disabled = true;
+              // btn.nextElementSibling.nextElementSibling.disabled = true;
+              // btn.nextElementSibling.nextElementSibling.nextElementSibling.disabled = true;
+              // btn.previousElementSibling.disabled = true;
+              // btn.previousElementSibling.previousElementSibling.disabled = true;
+              // btn.previousElementSibling.previousElementSibling.previousElementSibling.disabled = true;
+            }
+          });
+        });
+      }
+	  
+	  function checkAnswer(flag) {
+		let buttons = document.querySelectorAll('.btns')
+		if (flag != quizData[questionCount].answer){
+			buttons.forEach((button) => {
+			  if (button.getAttribute('data-option') === quizData[questionCount].answer){
+				button.style.color = 'green'
+			  }
+			})
+		}
+		buttons.forEach((button) => {
+		  // if (button.getAttribute('data-option') == quizData[questionCount].answer) {
+			// button.style.pointerEvents="";
+		  // }
+		  
+		  button.style.pointerEvents="none"
+		})
+	  }
+	  
+      function resulte() {
+        quiz.style.display = "none";
+        result.style.display = "flex";
+        showscore.innerHTML = `You got ${score} out of ${quizData.length} correct`;
+      }
+      // deleting wlc page options //
+      start.addEventListener("click", () => {
+        startt.style.display = "none";
+        start.style.display = "none";
+        quiz.style.display = "flex";
+        show();
+      });
+    </script>
+  </body>
+</html>

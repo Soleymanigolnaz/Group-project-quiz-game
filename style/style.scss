@@ -1,0 +1,119 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Playwrite NG Modern", cursive;
+}
+body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #708d81;
+  > #start {
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    > img {
+      width: 43%;
+      margin-left: 70px;
+    }
+    > .total {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      > * {
+        margin: 20px;
+      }
+      > h1 {
+        margin: 5%;
+        font-size: 60px;
+        color: #001427;
+      }
+      > p {
+        font-size: 25px;
+        color: #001427;
+      }
+      > .start {
+        width: 60%;
+        height: 12%;
+        font-size: 30px;
+        background-color: #001427;
+        color: #708d81;
+        border-radius: 10px;
+        box-shadow: 0px 0px 17px 0px rgba(0, 0, 0, 0.43);
+        -webkit-box-shadow: 0px 0px 17px 0px rgba(0, 0, 0, 0.43);
+        -moz-box-shadow: 0px 0px 17px 0px rgba(0, 0, 0, 0.43);
+        display: flex;
+        justify-content: center;
+        position: relative;
+        transition: 1s;
+        &:hover {
+          cursor: pointer;
+          background-color: rgba(0, 0, 0, 0.603);
+          color: #ffffff;
+        }
+      }
+    }
+  }
+  > #quiz {
+    width: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    > * {
+      margin: 10px;
+    }
+    > .header {
+      width: 100%;
+      height: 10%;
+      display: flex;
+      border: #001427 1px solid;
+      position: absolute;
+      top: 0;
+      margin: 0;
+      > #score {
+        width: 140px;
+        height: 60px;
+        font-size: 25px;
+        line-height: 60px;
+        margin-left: 15px;
+      }
+    }
+
+    > #question {
+      font-size: 30px;
+      margin: 50px;
+    }
+    > #options {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      > button {
+        width: 20%;
+        height: 100%;
+        margin: 20px;
+        font-size: 20px;
+      }
+    }
+    > #submit {
+      width: 30%;
+      height: 30%;
+      font-size: 23px;
+    }
+  }
+  > #result {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    > * {
+      margin: 20px;
+    }
+  }
+}

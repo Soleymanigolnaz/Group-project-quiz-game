@@ -1,6 +1,6 @@
 # Group-project-quiz-game
 Create a Quiz Application Using JavaScript
-- [Demo Project](![1](https://github.com/Soleymanigolnaz/Group-project-quiz-game/assets/139486149/3d65013f-a77c-4221-8fc6-733954fa551d))
+- [Demo Project](https://soleymanigolnaz.github.io/Group-project-quiz-game/)
 - Developed by Golnaz Soleymani Mood
 - Created - 2024-06-29
 - Technologies Used - Html , css , js
